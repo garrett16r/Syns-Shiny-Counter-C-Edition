@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Syns_Shiny_Counter_C_Edition
 {
-    public partial class Form1 : Form
+    public partial class AboutPage : Form
     {
-        public Form1()
+        public AboutPage()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

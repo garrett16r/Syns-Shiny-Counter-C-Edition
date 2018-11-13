@@ -1,0 +1,11 @@
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\bin\Debug\Syns-Shiny-Counter-C-Edition.exe.config
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\bin\Debug\Syns-Shiny-Counter-C-Edition.exe
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\bin\Debug\Syns-Shiny-Counter-C-Edition.pdb
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.csprojAssemblyReference.cache
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns_Shiny_Counter_C_Edition.Properties.Resources.resources
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.csproj.GenerateResource.cache
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.csproj.CoreCompileInputs.cache
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.exe
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.pdb
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns_Shiny_Counter_C_Edition.AboutPage.resources
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns_Shiny_Counter_C_Edition.ShinyCounter.resources
