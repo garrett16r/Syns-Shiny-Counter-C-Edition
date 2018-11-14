@@ -17,3 +17,4 @@ A simple counter program with added shiny hunting functionality. Odds are displa
 
 # Upcoming features
 - Mark a target as found. Target, date, and number of encounters will be added to a viewable log.
+- Have an actual icon
