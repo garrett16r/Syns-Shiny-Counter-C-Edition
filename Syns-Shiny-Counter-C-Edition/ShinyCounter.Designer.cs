@@ -44,6 +44,10 @@
             this.minusBtn = new System.Windows.Forms.Button();
             this.plusBtn = new System.Windows.Forms.Button();
             this.countBox = new System.Windows.Forms.NumericUpDown();
+            this.doneBtn = new System.Windows.Forms.Button();
+            this.targetLbl = new System.Windows.Forms.Label();
+            this.oddsLbl = new System.Windows.Forms.Label();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).BeginInit();
             this.SuspendLayout();
@@ -153,17 +157,19 @@
             this.methodCombo.Size = new System.Drawing.Size(145, 23);
             this.methodCombo.Text = "Select method...";
             this.methodCombo.ToolTipText = "Select your shiny hunting method here.";
+            this.methodCombo.TextChanged += new System.EventHandler(this.methodCombo_TextChanged);
             // 
             // targetCombo
             // 
             this.targetCombo.Name = "targetCombo";
             this.targetCombo.Size = new System.Drawing.Size(145, 23);
             this.targetCombo.Text = "Select target...";
+            this.targetCombo.TextChanged += new System.EventHandler(this.targetCombo_TextChanged);
             // 
             // minusBtn
             // 
             this.minusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minusBtn.Location = new System.Drawing.Point(93, 334);
+            this.minusBtn.Location = new System.Drawing.Point(109, 334);
             this.minusBtn.Name = "minusBtn";
             this.minusBtn.Size = new System.Drawing.Size(79, 49);
             this.minusBtn.TabIndex = 2;
@@ -174,7 +180,7 @@
             // plusBtn
             // 
             this.plusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plusBtn.Location = new System.Drawing.Point(284, 334);
+            this.plusBtn.Location = new System.Drawing.Point(265, 334);
             this.plusBtn.Name = "plusBtn";
             this.plusBtn.Size = new System.Drawing.Size(79, 49);
             this.plusBtn.TabIndex = 3;
@@ -200,11 +206,59 @@
             this.countBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.countBox.ValueChanged += new System.EventHandler(this.countBox_ValueChanged);
             // 
+            // doneBtn
+            // 
+            this.doneBtn.Location = new System.Drawing.Point(181, 221);
+            this.doneBtn.Name = "doneBtn";
+            this.doneBtn.Size = new System.Drawing.Size(75, 23);
+            this.doneBtn.TabIndex = 4;
+            this.doneBtn.Text = "Done";
+            this.doneBtn.UseVisualStyleBackColor = true;
+            this.doneBtn.Visible = false;
+            this.doneBtn.Click += new System.EventHandler(this.doneBtn_Click);
+            // 
+            // targetLbl
+            // 
+            this.targetLbl.AutoSize = true;
+            this.targetLbl.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targetLbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.targetLbl.Location = new System.Drawing.Point(12, 583);
+            this.targetLbl.Name = "targetLbl";
+            this.targetLbl.Size = new System.Drawing.Size(186, 28);
+            this.targetLbl.TabIndex = 5;
+            this.targetLbl.Text = "Hunting for: None";
+            // 
+            // oddsLbl
+            // 
+            this.oddsLbl.AutoSize = true;
+            this.oddsLbl.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oddsLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.oddsLbl.Location = new System.Drawing.Point(12, 611);
+            this.oddsLbl.Name = "oddsLbl";
+            this.oddsLbl.Size = new System.Drawing.Size(269, 28);
+            this.oddsLbl.TabIndex = 6;
+            this.oddsLbl.Text = "Your odds: Select a method";
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(197, 30);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 7;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Visible = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // ShinyCounter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 646);
+            this.ClientSize = new System.Drawing.Size(467, 648);
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.oddsLbl);
+            this.Controls.Add(this.targetLbl);
+            this.Controls.Add(this.doneBtn);
             this.Controls.Add(this.countBox);
             this.Controls.Add(this.plusBtn);
             this.Controls.Add(this.minusBtn);
@@ -238,7 +292,11 @@
         private System.Windows.Forms.ToolStripComboBox targetCombo;
         private System.Windows.Forms.Button minusBtn;
         private System.Windows.Forms.Button plusBtn;
-        private System.Windows.Forms.NumericUpDown countBox;
+        public System.Windows.Forms.NumericUpDown countBox;
+        private System.Windows.Forms.Button doneBtn;
+        private System.Windows.Forms.Label targetLbl;
+        private System.Windows.Forms.Label oddsLbl;
+        private System.Windows.Forms.Button saveBtn;
     }
 }
 
