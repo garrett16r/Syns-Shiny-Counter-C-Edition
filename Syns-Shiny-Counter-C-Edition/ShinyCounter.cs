@@ -14,6 +14,9 @@ namespace Syns_Shiny_Counter_C_Edition
     public partial class ShinyCounter : Form
     {
 
+        public string HOME_DIR = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        public string SAVE_DIR = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/Documents/Syns Shiny Counter C# Edition/save";
+        public string RES_DIR = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/Documents/Syns Shiny Counter C# Edition/res";
         public int count = 0;
 
         public ShinyCounter()
@@ -23,6 +26,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void ShinyCounter_Load(object sender, EventArgs e)
         {
+            createFilesDirectories();
             fillPokemonList();
             load();
             countBox.Value = count;
@@ -34,10 +38,21 @@ namespace Syns_Shiny_Counter_C_Edition
             }            
         }
 
+        public void createFilesDirectories()
+        {
+            if (!System.IO.Directory.Exists(HOME_DIR + "/Documents/Syns Shiny Counter C# Edition"))
+            {
+                System.IO.Directory.CreateDirectory(SAVE_DIR);
+                System.IO.Directory.CreateDirectory(RES_DIR);
+                System.IO.File.CreateText(SAVE_DIR + "/count.txt");
+                System.IO.File.CreateText(SAVE_DIR + "/targetmethod.txt");
+            }
+        }
+
         // Fill the targetCombo list with all pokemon
         public void fillPokemonList()
         {
-            List<string> pokemonList = new List<string>();
+            List<string> pokemonList = new List<string>();            
             using (StreamReader sr = new StreamReader("pokemonlist.txt"))
             {
                 string token;
@@ -58,12 +73,12 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             saveBtn.Visible = false;
 
-            using (StreamWriter sw = new StreamWriter("count.txt"))
+            using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/count.txt"))
             {
                 sw.WriteLine(count.ToString());
             }
 
-            using (StreamWriter sw = new StreamWriter("targetmethod.txt"))
+            using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/targetmethod.txt"))
             {
                 sw.WriteLine(targetCombo.Text);
                 sw.WriteLine(methodCombo.Text);
@@ -72,12 +87,18 @@ namespace Syns_Shiny_Counter_C_Edition
 
         public void load()
         {
-            using (StreamReader sr = new StreamReader("count.txt"))
+            using (StreamReader sr = new StreamReader(SAVE_DIR + "/count.txt"))
             {
-                count = int.Parse(sr.ReadLine());
+                try
+                {
+                    count = int.Parse(sr.ReadLine());
+                } catch (Exception)
+                {
+
+                }
             }
 
-            using (StreamReader sr = new StreamReader("targetmethod.txt"))
+            using (StreamReader sr = new StreamReader(SAVE_DIR + "/targetmethod.txt"))
             {
                 targetCombo.Text = sr.ReadLine();
                 methodCombo.Text = sr.ReadLine();
