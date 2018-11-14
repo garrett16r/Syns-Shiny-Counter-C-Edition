@@ -17,9 +17,9 @@ namespace Syns_Shiny_Counter_C_Edition
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void githubLbl_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("https://github.com/Syntthetix/Syns-Shiny-Counter-C-Edition");
         }
     }
 }

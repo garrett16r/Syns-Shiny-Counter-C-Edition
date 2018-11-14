@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.githubLbl = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -37,17 +38,28 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(576, 150);
+            this.label1.Size = new System.Drawing.Size(260, 75);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Author: Garrett Rose\r\n\r\nDate of creation: 11/13/18\r\n\r\nGitHub: \r\nhttps://github.co" +
-    "m/Syntthetix/Syns-Shiny-Counter-C-Edition";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "Author: Garrett Rose\r\n\r\nDate of creation: 11/13/18";
+            // 
+            // githubLbl
+            // 
+            this.githubLbl.AutoSize = true;
+            this.githubLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.githubLbl.Location = new System.Drawing.Point(0, 100);
+            this.githubLbl.Name = "githubLbl";
+            this.githubLbl.Size = new System.Drawing.Size(134, 25);
+            this.githubLbl.TabIndex = 1;
+            this.githubLbl.TabStop = true;
+            this.githubLbl.Text = "GitHub Page";
+            this.githubLbl.Click += new System.EventHandler(this.githubLbl_Click);
             // 
             // AboutPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 174);
+            this.ClientSize = new System.Drawing.Size(284, 134);
+            this.Controls.Add(this.githubLbl);
             this.Controls.Add(this.label1);
             this.Name = "AboutPage";
             this.Text = "AboutPage";
@@ -59,5 +71,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel githubLbl;
     }
 }
