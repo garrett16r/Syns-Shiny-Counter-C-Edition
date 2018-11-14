@@ -11,9 +11,9 @@ A simple counter program with added shiny hunting functionality. Odds are displa
 - Method and target selection
 - Autosaving, as well as manual saving for certain scenarios
 - Target/current odds display
+- Progress messages based on current number of encounters compared to max odds for selected method.
 - About page
 - Link to GitHub page
 
 # Upcoming features
-- Progress messages based on current number of encounters compared to max odds for selected method.
 - Mark a target as found. Target, date, and number of encounters will be added to a viewable log.
