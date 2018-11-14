@@ -30,10 +30,6 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundSmi = new System.Windows.Forms.ToolStripMenuItem();
-            this.whiteSmi = new System.Windows.Forms.ToolStripMenuItem();
-            this.graySmi = new System.Windows.Forms.ToolStripMenuItem();
-            this.blackSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.resetSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.customSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +44,9 @@
             this.targetLbl = new System.Windows.Forms.Label();
             this.oddsLbl = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.progressLbl = new System.Windows.Forms.Label();
+            this.customLbl = new System.Windows.Forms.Label();
+            this.keyboardSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).BeginInit();
             this.SuspendLayout();
@@ -68,43 +67,11 @@
             // editMenuItem
             // 
             this.editMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backgroundSmi,
             this.resetSmi,
             this.customSmi});
             this.editMenuItem.Name = "editMenuItem";
             this.editMenuItem.Size = new System.Drawing.Size(39, 23);
-            this.editMenuItem.Text = "Edit";
-            // 
-            // backgroundSmi
-            // 
-            this.backgroundSmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.whiteSmi,
-            this.graySmi,
-            this.blackSmi});
-            this.backgroundSmi.Name = "backgroundSmi";
-            this.backgroundSmi.Size = new System.Drawing.Size(147, 22);
-            this.backgroundSmi.Text = "Background";
-            // 
-            // whiteSmi
-            // 
-            this.whiteSmi.Name = "whiteSmi";
-            this.whiteSmi.Size = new System.Drawing.Size(105, 22);
-            this.whiteSmi.Text = "White";
-            this.whiteSmi.Click += new System.EventHandler(this.whiteSmi_Click);
-            // 
-            // graySmi
-            // 
-            this.graySmi.Name = "graySmi";
-            this.graySmi.Size = new System.Drawing.Size(105, 22);
-            this.graySmi.Text = "Gray";
-            this.graySmi.Click += new System.EventHandler(this.graySmi_Click);
-            // 
-            // blackSmi
-            // 
-            this.blackSmi.Name = "blackSmi";
-            this.blackSmi.Size = new System.Drawing.Size(105, 22);
-            this.blackSmi.Text = "Black";
-            this.blackSmi.Click += new System.EventHandler(this.blackSmi_Click);
+            this.editMenuItem.Text = "&Edit";
             // 
             // resetSmi
             // 
@@ -124,22 +91,23 @@
             // 
             this.helpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutSmi,
-            this.githubSmi});
+            this.githubSmi,
+            this.keyboardSmi});
             this.helpMenuItem.Name = "helpMenuItem";
             this.helpMenuItem.Size = new System.Drawing.Size(44, 23);
-            this.helpMenuItem.Text = "Help";
+            this.helpMenuItem.Text = "&Help";
             // 
             // aboutSmi
             // 
             this.aboutSmi.Name = "aboutSmi";
-            this.aboutSmi.Size = new System.Drawing.Size(173, 22);
+            this.aboutSmi.Size = new System.Drawing.Size(180, 22);
             this.aboutSmi.Text = "About";
             this.aboutSmi.Click += new System.EventHandler(this.aboutSmi_Click);
             // 
             // githubSmi
             // 
             this.githubSmi.Name = "githubSmi";
-            this.githubSmi.Size = new System.Drawing.Size(173, 22);
+            this.githubSmi.Size = new System.Drawing.Size(180, 22);
             this.githubSmi.Text = "Open GitHub Page";
             this.githubSmi.Click += new System.EventHandler(this.githubSmi_Click);
             // 
@@ -250,11 +218,42 @@
             this.saveBtn.Visible = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
+            // progressLbl
+            // 
+            this.progressLbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressLbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.progressLbl.Location = new System.Drawing.Point(51, 386);
+            this.progressLbl.Name = "progressLbl";
+            this.progressLbl.Size = new System.Drawing.Size(357, 80);
+            this.progressLbl.TabIndex = 8;
+            this.progressLbl.Text = "Progress message";
+            this.progressLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // customLbl
+            // 
+            this.customLbl.AutoSize = true;
+            this.customLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customLbl.Location = new System.Drawing.Point(12, 258);
+            this.customLbl.Name = "customLbl";
+            this.customLbl.Size = new System.Drawing.Size(441, 21);
+            this.customLbl.TabIndex = 9;
+            this.customLbl.Text = "Enter a value into the encounters field, then press \'Done\'";
+            this.customLbl.Visible = false;
+            // 
+            // keyboardSmi
+            // 
+            this.keyboardSmi.Name = "keyboardSmi";
+            this.keyboardSmi.Size = new System.Drawing.Size(180, 22);
+            this.keyboardSmi.Text = "Keyboard shortcuts";
+            this.keyboardSmi.Click += new System.EventHandler(this.keyboardSmi_Click);
+            // 
             // ShinyCounter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 648);
+            this.Controls.Add(this.customLbl);
+            this.Controls.Add(this.progressLbl);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.oddsLbl);
             this.Controls.Add(this.targetLbl);
@@ -263,10 +262,12 @@
             this.Controls.Add(this.plusBtn);
             this.Controls.Add(this.minusBtn);
             this.Controls.Add(this.menuStrip);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "ShinyCounter";
             this.Text = "Syn\'s Shiny Counter";
             this.Load += new System.EventHandler(this.ShinyCounter_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ShinyCounter_KeyDown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).EndInit();
@@ -279,10 +280,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem editMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backgroundSmi;
-        private System.Windows.Forms.ToolStripMenuItem whiteSmi;
-        private System.Windows.Forms.ToolStripMenuItem graySmi;
-        private System.Windows.Forms.ToolStripMenuItem blackSmi;
         private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutSmi;
         private System.Windows.Forms.ToolStripMenuItem githubSmi;
@@ -297,6 +294,9 @@
         private System.Windows.Forms.Label targetLbl;
         private System.Windows.Forms.Label oddsLbl;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Label progressLbl;
+        private System.Windows.Forms.Label customLbl;
+        private System.Windows.Forms.ToolStripMenuItem keyboardSmi;
     }
 }
 

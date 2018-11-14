@@ -18,24 +18,29 @@ namespace Syns_Shiny_Counter_C_Edition
         public string SAVE_DIR = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/Documents/Syns Shiny Counter C# Edition/save";
         public string RES_DIR = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/Documents/Syns Shiny Counter C# Edition/res";
         public int count = 0;
+        public string target = "";
+        public string method = "";
+        public int oddsMax = 8192;
 
         public ShinyCounter()
         {
             InitializeComponent();
         }
 
+        // Any code in this method immediately runs on startup
         private void ShinyCounter_Load(object sender, EventArgs e)
         {
             createFilesDirectories();
             fillPokemonList();
             load();
             countBox.Value = count;
+            progressLbl.Text = getProgressMessage();
             saveBtn.Visible = false;
 
             if (!targetCombo.Text.Equals("Select target..."))
             {
                 targetLbl.Text = "Hunting for: " + targetCombo.Text;
-            }            
+            }
         }
 
         public void createFilesDirectories()
@@ -52,7 +57,7 @@ namespace Syns_Shiny_Counter_C_Edition
         // Fill the targetCombo list with all pokemon
         public void fillPokemonList()
         {
-            List<string> pokemonList = new List<string>();            
+            List<string> pokemonList = new List<string>();
             using (StreamReader sr = new StreamReader("pokemonlist.txt"))
             {
                 string token;
@@ -92,16 +97,16 @@ namespace Syns_Shiny_Counter_C_Edition
                 try
                 {
                     count = int.Parse(sr.ReadLine());
-                } catch (Exception)
-                {
-
                 }
+                catch (Exception) { }
             }
 
             using (StreamReader sr = new StreamReader(SAVE_DIR + "/targetmethod.txt"))
             {
-                targetCombo.Text = sr.ReadLine();
-                methodCombo.Text = sr.ReadLine();
+                target = sr.ReadLine();
+                method = sr.ReadLine();
+                targetCombo.Text = target;
+                methodCombo.Text = method;
             }
         }
 
@@ -186,31 +191,100 @@ namespace Syns_Shiny_Counter_C_Edition
             return odds;
         }
 
-        // Change background to white
-        private void whiteSmi_Click(object sender, EventArgs e)
+        // Obtain a progress message based on the current number of encounters compared to the max odds for the current method
+        public string getProgressMessage()
         {
-            this.BackColor = Color.GhostWhite;
-            menuStrip.BackColor = Color.GhostWhite;
-            editMenuItem.ForeColor = Color.Black;
-            helpMenuItem.ForeColor = Color.Black;
-        }
+            List<String> msg = new List<String>();
+            String message = "";
+            msg.Add("You've got a ways to go...");
+            msg.Add("One quarter of the way to odds!");
+            msg.Add("Half way to odds!");
+            msg.Add("Three quarters of the way!");
+            msg.Add("You should get " + target + " really soon!");
+            msg.Add("You better not stop the hunt now.");
+            msg.Add("Better get that chain going.");
+            msg.Add("It's a miracle you haven't broken your chain.");
 
-        // Change background to gray
-        private void graySmi_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.DarkGray;
-            menuStrip.BackColor = Color.DarkGray;
-            editMenuItem.ForeColor = Color.Black;
-            helpMenuItem.ForeColor = Color.Black;
-        }
+            if (!method.Equals("Poke Radar (XY)") && !method.Equals("Poke Radar (DPP)")
+                    && !method.Equals("Chain Fishing"))
+            {
+                if (count < (oddsMax / 4))
+                {
+                    message = msg[0];
+                }
+                else if (count < (oddsMax / 2))
+                {
+                    message = msg[1];
+                }
+                else if (count < ((double)oddsMax * (double)0.75))
+                {
+                    message = msg[2];
+                }
+                else if (count < oddsMax)
+                {
+                    message = msg[3];
+                }
+                else if (count >= oddsMax && count <= oddsMax + 200)
+                {
+                    message = msg[4];
+                }
+                else if (count > oddsMax + 200)
+                {
+                    message = msg[5];
+                }
+            }
+            else if (!method.Equals("Chain Fishing"))
+            {
+                if (count < 10)
+                {
+                    message = msg[6];
+                }
+                else if (count < 20)
+                {
+                    message = msg[1];
+                }
+                else if (count < 30)
+                {
+                    message = msg[2];
+                }
+                else if (count < 40)
+                {
+                    message = msg[3];
+                }
+                else
+                {
+                    message = "You better reset like there's no tomorrow (" + (count - 40) + " resets)";
+                }
+            }
+            else if (method.Equals("Chain Fishing"))
+            {
+                if (count < 5)
+                {
+                    message = msg[6];
+                }
+                else if (count < 10)
+                {
+                    message = msg[1];
+                }
+                else if (count < 15)
+                {
+                    message = msg[2];
+                }
+                else if (count < 20)
+                {
+                    message = msg[3];
+                }
+                else if (count >= 20 && count < 100)
+                {
+                    message = msg[4];
+                }
+                else
+                {
+                    message = msg[5];
+                }
+            }
 
-        // Change background to black
-        private void blackSmi_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Black;
-            menuStrip.BackColor = Color.Black;
-            editMenuItem.ForeColor = Color.White;
-            helpMenuItem.ForeColor = Color.White;
+            return message;
         }
 
         // About page button
@@ -230,7 +304,17 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             countBox.ReadOnly = false;
             doneBtn.Visible = true;
-            MessageBox.Show("Enter a value into the encounters field, then press 'Done'");
+            customLbl.Visible = true;
+            //MessageBox.Show("Enter a value into the encounters field, then press 'Done'");
+        }
+
+        private void doneBtn_Click(object sender, EventArgs e)
+        {
+            count = (int)countBox.Value; save();
+
+            countBox.ReadOnly = true;
+            doneBtn.Visible = false;
+            customLbl.Visible = false;
         }
 
         private void resetSmi_Click(object sender, EventArgs e)
@@ -250,21 +334,13 @@ namespace Syns_Shiny_Counter_C_Edition
             count++;
             countBox.Value = count;
         }
-        
+
         // Save data whenever count is updated
         private void countBox_ValueChanged(object sender, EventArgs e)
         {
             count = (int)countBox.Value;
+            progressLbl.Text = getProgressMessage();
             save();
-        }
-
-        private void doneBtn_Click(object sender, EventArgs e)
-        {
-            count = (int)countBox.Value;
-            save();
-
-            countBox.ReadOnly = true;
-            doneBtn.Visible = false;
         }
 
         private void targetCombo_TextChanged(object sender, EventArgs e)
@@ -275,7 +351,9 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void methodCombo_TextChanged(object sender, EventArgs e)
         {
-            oddsLbl.Text = ("Your odds: 1/" + getOdds());
+            oddsMax = getOdds();
+            oddsLbl.Text = ("Your odds: 1/" + oddsMax);
+            progressLbl.Text = getProgressMessage();
             saveBtn.Visible = true;
         }
 
@@ -283,6 +361,32 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             save();
             saveBtn.Visible = false;
+        }
+
+        private void keyboardSmi_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Up arrow - Increase counter\n" +
+                "Down arrow - Decrease counter\n" +
+                "F1 - Reset counter to 0\n" +
+                "F2 - Set a custom value\n" +
+                "F5 - Show this screen");
+        }
+
+        private void ShinyCounter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                customSmi_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                resetSmi_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                keyboardSmi_Click(null, null);
+            }
         }
     }
 }
