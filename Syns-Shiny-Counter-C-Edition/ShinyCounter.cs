@@ -32,7 +32,7 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             createFilesDirectories();
             fillPokemonList();
-            load();
+            //load();
             countBox.Value = count;
             progressLbl.Text = getProgressMessage();
             saveBtn.Visible = false;
@@ -49,8 +49,14 @@ namespace Syns_Shiny_Counter_C_Edition
             {
                 System.IO.Directory.CreateDirectory(SAVE_DIR);
                 System.IO.Directory.CreateDirectory(RES_DIR);
-                System.IO.File.CreateText(SAVE_DIR + "/count.txt");
-                System.IO.File.CreateText(SAVE_DIR + "/targetmethod.txt");
+
+                // Create a file for the pokemon list, then fill it with the pokemonlist string resource
+                System.IO.File.CreateText(RES_DIR + "/pokemonlist.txt").Close();
+                System.IO.File.WriteAllText(RES_DIR + "/pokemonlist.txt", Properties.Resources.pokemonlist);
+            }
+            else
+            {
+                load();
             }
         }
 
@@ -58,7 +64,8 @@ namespace Syns_Shiny_Counter_C_Edition
         public void fillPokemonList()
         {
             List<string> pokemonList = new List<string>();
-            using (StreamReader sr = new StreamReader("pokemonlist.txt"))
+
+            using (StreamReader sr = new StreamReader(RES_DIR + "/pokemonlist.txt"))
             {
                 string token;
 

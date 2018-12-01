@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Syns_Shiny_Counter_C_Edition.Properties
-{
-
-
+namespace Syns_Shiny_Counter_C_Edition.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,108 @@ namespace Syns_Shiny_Counter_C_Edition.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    public class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Syns_Shiny_Counter_C_Edition.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abomasnow
+        ///Abra
+        ///Absol
+        ///Accelgor
+        ///Aegislash
+        ///Aerodactyl
+        ///Aggron
+        ///Aipom
+        ///Alakazam
+        ///Alomomola
+        ///Altaria
+        ///Amaura
+        ///Ambipom
+        ///Amoonguss
+        ///Ampharos
+        ///Anorith
+        ///Arbok
+        ///Arcanine
+        ///Arceus
+        ///Archen
+        ///Archeops
+        ///Ariados
+        ///Armaldo
+        ///Aromatisse
+        ///Aron
+        ///Articuno
+        ///Audino
+        ///Aurorus
+        ///Avalugg
+        ///Axew
+        ///Azelf
+        ///Azumarill
+        ///Azurill
+        ///Bagon
+        ///Baltoy
+        ///Banette
+        ///Barbaracle
+        ///Barboach
+        ///Basculin
+        ///Bastiodon
+        ///Bayleef
+        ///Beartic
+        ///Beautifly
+        ///Beedrill
+        ///Beheeyem
+        ///Beldum
+        ///Bellossom
+        ///Bellsprout
+        ///Bergmite
+        ///Bibarel
+        ///Bidoof
+        ///Binacle
+        ///Bisharp
+        ///Blastoise
+        ///Blaziken
+        ///Bl [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string pokemonlist {
+            get {
+                return ResourceManager.GetString("pokemonlist", resourceCulture);
             }
         }
     }
