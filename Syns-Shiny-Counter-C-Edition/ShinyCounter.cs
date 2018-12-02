@@ -43,6 +43,7 @@ namespace Syns_Shiny_Counter_C_Edition
             }
         }
 
+        // Create the file directories for the save files and resource files
         public void createFilesDirectories()
         {
             if (!System.IO.Directory.Exists(HOME_DIR + "/Documents/Syns Shiny Counter C# Edition"))
@@ -73,6 +74,7 @@ namespace Syns_Shiny_Counter_C_Edition
                 {
                     pokemonList.Add(token);
                 }
+                sr.Close();
             }
 
             foreach (string s in pokemonList)
@@ -81,6 +83,7 @@ namespace Syns_Shiny_Counter_C_Edition
             }
         }
 
+        // Save all data
         public void save()
         {
             saveBtn.Visible = false;
@@ -88,15 +91,18 @@ namespace Syns_Shiny_Counter_C_Edition
             using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/count.txt"))
             {
                 sw.WriteLine(count.ToString());
+                sw.Close();
             }
 
             using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/targetmethod.txt"))
             {
                 sw.WriteLine(targetCombo.Text);
                 sw.WriteLine(methodCombo.Text);
+                sw.Close();
             }
         }
 
+        // Load all data on launch
         public void load()
         {
             using (StreamReader sr = new StreamReader(SAVE_DIR + "/count.txt"))
@@ -104,6 +110,7 @@ namespace Syns_Shiny_Counter_C_Edition
                 try
                 {
                     count = int.Parse(sr.ReadLine());
+                    sr.Close();
                 }
                 catch (Exception) { }
             }
@@ -114,6 +121,7 @@ namespace Syns_Shiny_Counter_C_Edition
                 method = sr.ReadLine();
                 targetCombo.Text = target;
                 methodCombo.Text = method;
+                sr.Close();
             }
         }
 
@@ -332,8 +340,11 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void minusBtn_Click(object sender, EventArgs e)
         {
-            count--;
-            countBox.Value = count;
+            if (count > 0)
+            {
+                count--;
+                countBox.Value = count;
+            }
         }
 
         private void plusBtn_Click(object sender, EventArgs e)
