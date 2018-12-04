@@ -35,6 +35,7 @@
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.githubSmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.keyboardSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.methodCombo = new System.Windows.Forms.ToolStripComboBox();
             this.targetCombo = new System.Windows.Forms.ToolStripComboBox();
             this.minusBtn = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.progressLbl = new System.Windows.Forms.Label();
             this.customLbl = new System.Windows.Forms.Label();
-            this.keyboardSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).BeginInit();
             this.SuspendLayout();
@@ -100,16 +100,23 @@
             // aboutSmi
             // 
             this.aboutSmi.Name = "aboutSmi";
-            this.aboutSmi.Size = new System.Drawing.Size(180, 22);
+            this.aboutSmi.Size = new System.Drawing.Size(176, 22);
             this.aboutSmi.Text = "About";
             this.aboutSmi.Click += new System.EventHandler(this.aboutSmi_Click);
             // 
             // githubSmi
             // 
             this.githubSmi.Name = "githubSmi";
-            this.githubSmi.Size = new System.Drawing.Size(180, 22);
+            this.githubSmi.Size = new System.Drawing.Size(176, 22);
             this.githubSmi.Text = "Open GitHub Page";
             this.githubSmi.Click += new System.EventHandler(this.githubSmi_Click);
+            // 
+            // keyboardSmi
+            // 
+            this.keyboardSmi.Name = "keyboardSmi";
+            this.keyboardSmi.Size = new System.Drawing.Size(176, 22);
+            this.keyboardSmi.Text = "Keyboard shortcuts";
+            this.keyboardSmi.Click += new System.EventHandler(this.keyboardSmi_Click);
             // 
             // methodCombo
             // 
@@ -136,11 +143,12 @@
             // 
             // minusBtn
             // 
+            this.minusBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.minusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minusBtn.Location = new System.Drawing.Point(109, 334);
             this.minusBtn.Name = "minusBtn";
             this.minusBtn.Size = new System.Drawing.Size(79, 49);
-            this.minusBtn.TabIndex = 2;
+            this.minusBtn.TabIndex = 3;
             this.minusBtn.Text = "-";
             this.minusBtn.UseVisualStyleBackColor = true;
             this.minusBtn.Click += new System.EventHandler(this.minusBtn_Click);
@@ -151,7 +159,7 @@
             this.plusBtn.Location = new System.Drawing.Point(265, 334);
             this.plusBtn.Name = "plusBtn";
             this.plusBtn.Size = new System.Drawing.Size(79, 49);
-            this.plusBtn.TabIndex = 3;
+            this.plusBtn.TabIndex = 2;
             this.plusBtn.Text = "+";
             this.plusBtn.UseVisualStyleBackColor = true;
             this.plusBtn.Click += new System.EventHandler(this.plusBtn_Click);
@@ -240,17 +248,12 @@
             this.customLbl.Text = "Enter a value into the encounters field, then press \'Done\'";
             this.customLbl.Visible = false;
             // 
-            // keyboardSmi
-            // 
-            this.keyboardSmi.Name = "keyboardSmi";
-            this.keyboardSmi.Size = new System.Drawing.Size(180, 22);
-            this.keyboardSmi.Text = "Keyboard shortcuts";
-            this.keyboardSmi.Click += new System.EventHandler(this.keyboardSmi_Click);
-            // 
             // ShinyCounter
             // 
+            this.AcceptButton = this.plusBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.minusBtn;
             this.ClientSize = new System.Drawing.Size(467, 648);
             this.Controls.Add(this.customLbl);
             this.Controls.Add(this.progressLbl);
@@ -264,6 +267,7 @@
             this.Controls.Add(this.menuStrip);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
+            this.MaximizeBox = false;
             this.Name = "ShinyCounter";
             this.Text = "Syn\'s Shiny Counter";
             this.Load += new System.EventHandler(this.ShinyCounter_Load);

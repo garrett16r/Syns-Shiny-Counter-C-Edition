@@ -344,6 +344,7 @@ namespace Syns_Shiny_Counter_C_Edition
             {
                 count--;
                 countBox.Value = count;
+                countBox.Focus();
             }
         }
 
@@ -351,6 +352,7 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             count++;
             countBox.Value = count;
+            countBox.Focus();
         }
 
         // Save data whenever count is updated
