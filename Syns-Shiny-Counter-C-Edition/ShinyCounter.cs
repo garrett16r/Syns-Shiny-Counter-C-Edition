@@ -29,7 +29,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         // Any code in this method immediately runs on startup
         private void ShinyCounter_Load(object sender, EventArgs e)
-        {
+        {            
             createFilesDirectories();
             fillPokemonList();
             //load();
@@ -94,10 +94,11 @@ namespace Syns_Shiny_Counter_C_Edition
                 sw.Close();
             }
 
-            using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/targetmethod.txt"))
+            using (StreamWriter sw = new StreamWriter(SAVE_DIR + "/data.txt"))
             {
                 sw.WriteLine(targetCombo.Text);
                 sw.WriteLine(methodCombo.Text);
+                sw.WriteLine(this.Opacity);
                 sw.Close();
             }
         }
@@ -115,10 +116,12 @@ namespace Syns_Shiny_Counter_C_Edition
                 catch (Exception) { }
             }
 
-            using (StreamReader sr = new StreamReader(SAVE_DIR + "/targetmethod.txt"))
+            using (StreamReader sr = new StreamReader(SAVE_DIR + "/data.txt"))
             {
                 target = sr.ReadLine();
                 method = sr.ReadLine();
+                this.Opacity = double.Parse(sr.ReadLine());
+                opacityBar.Value = (int)(this.Opacity * 10);
                 targetCombo.Text = target;
                 methodCombo.Text = method;
                 sr.Close();
@@ -407,6 +410,25 @@ namespace Syns_Shiny_Counter_C_Edition
             {
                 keyboardSmi_Click(null, null);
             }
+        }
+
+        private void opacitySmi_Click(object sender, EventArgs e)
+        {
+            opacityBar.Visible = true;
+            doneBtn2.Visible = true;
+            //this.Opacity -= .5;
+        }
+
+        private void opacityBar_ValueChanged(object sender, EventArgs e)
+        {
+            this.Opacity = (double)opacityBar.Value / 10;          
+        }
+
+        private void doneBtn2_Click(object sender, EventArgs e)
+        {            
+            opacityBar.Visible = false;
+            doneBtn2.Visible = false;
+            save();
         }
     }
 }

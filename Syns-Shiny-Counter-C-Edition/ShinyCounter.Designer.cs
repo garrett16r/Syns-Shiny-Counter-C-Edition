@@ -32,6 +32,7 @@
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.customSmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacitySmi = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.githubSmi = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,8 +48,11 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.progressLbl = new System.Windows.Forms.Label();
             this.customLbl = new System.Windows.Forms.Label();
+            this.opacityBar = new System.Windows.Forms.TrackBar();
+            this.doneBtn2 = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.opacityBar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -68,7 +72,8 @@
             // 
             this.editMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetSmi,
-            this.customSmi});
+            this.customSmi,
+            this.opacitySmi});
             this.editMenuItem.Name = "editMenuItem";
             this.editMenuItem.Size = new System.Drawing.Size(39, 23);
             this.editMenuItem.Text = "&Edit";
@@ -86,6 +91,13 @@
             this.customSmi.Size = new System.Drawing.Size(147, 22);
             this.customSmi.Text = "Custom value";
             this.customSmi.Click += new System.EventHandler(this.customSmi_Click);
+            // 
+            // opacitySmi
+            // 
+            this.opacitySmi.Name = "opacitySmi";
+            this.opacitySmi.Size = new System.Drawing.Size(147, 22);
+            this.opacitySmi.Text = "Opacity";
+            this.opacitySmi.Click += new System.EventHandler(this.opacitySmi_Click);
             // 
             // helpMenuItem
             // 
@@ -248,6 +260,28 @@
             this.customLbl.Text = "Enter a value into the encounters field, then press \'Done\'";
             this.customLbl.Visible = false;
             // 
+            // opacityBar
+            // 
+            this.opacityBar.Location = new System.Drawing.Point(351, 591);
+            this.opacityBar.Minimum = 1;
+            this.opacityBar.Name = "opacityBar";
+            this.opacityBar.Size = new System.Drawing.Size(104, 45);
+            this.opacityBar.TabIndex = 10;
+            this.opacityBar.Value = 10;
+            this.opacityBar.Visible = false;
+            this.opacityBar.ValueChanged += new System.EventHandler(this.opacityBar_ValueChanged);
+            // 
+            // doneBtn2
+            // 
+            this.doneBtn2.Location = new System.Drawing.Point(368, 562);
+            this.doneBtn2.Name = "doneBtn2";
+            this.doneBtn2.Size = new System.Drawing.Size(75, 23);
+            this.doneBtn2.TabIndex = 11;
+            this.doneBtn2.Text = "Done";
+            this.doneBtn2.UseVisualStyleBackColor = true;
+            this.doneBtn2.Visible = false;
+            this.doneBtn2.Click += new System.EventHandler(this.doneBtn2_Click);
+            // 
             // ShinyCounter
             // 
             this.AcceptButton = this.plusBtn;
@@ -255,6 +289,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.minusBtn;
             this.ClientSize = new System.Drawing.Size(467, 648);
+            this.Controls.Add(this.doneBtn2);
+            this.Controls.Add(this.opacityBar);
             this.Controls.Add(this.customLbl);
             this.Controls.Add(this.progressLbl);
             this.Controls.Add(this.saveBtn);
@@ -275,6 +311,7 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.opacityBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,6 +338,9 @@
         private System.Windows.Forms.Label progressLbl;
         private System.Windows.Forms.Label customLbl;
         private System.Windows.Forms.ToolStripMenuItem keyboardSmi;
+        private System.Windows.Forms.TrackBar opacityBar;
+        private System.Windows.Forms.ToolStripMenuItem opacitySmi;
+        private System.Windows.Forms.Button doneBtn2;
     }
 }
 
