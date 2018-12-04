@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syns-Shiny-Counter-C-Edition.exe" size="30152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syns-Shiny-Counter-C-Edition.exe" size="30664">
       <assemblyIdentity name="Syns-Shiny-Counter-C-Edition" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D/7qecdxPXBv84kEkrtPBpYKd49ZZdGpEY9FC3/7iwM=</dsig:DigestValue>
+        <dsig:DigestValue>PdCnTWcQz6Fxm20Zdm2VSkqc0CFH7N2AH6Zqs390CFs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

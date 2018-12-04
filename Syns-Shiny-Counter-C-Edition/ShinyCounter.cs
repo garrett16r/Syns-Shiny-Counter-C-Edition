@@ -29,7 +29,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         // Any code in this method immediately runs on startup
         private void ShinyCounter_Load(object sender, EventArgs e)
-        {
+        {            
             createFilesDirectories();
             fillPokemonList();
             //load();
@@ -407,6 +407,24 @@ namespace Syns_Shiny_Counter_C_Edition
             {
                 keyboardSmi_Click(null, null);
             }
+        }
+
+        private void opacitySmi_Click(object sender, EventArgs e)
+        {
+            opacityBar.Visible = true;
+            doneBtn2.Visible = true;
+            //this.Opacity -= .5;
+        }
+
+        private void opacityBar_ValueChanged(object sender, EventArgs e)
+        {
+            this.Opacity = (double)opacityBar.Value / 10;          
+        }
+
+        private void doneBtn2_Click(object sender, EventArgs e)
+        {            
+            opacityBar.Visible = false;
+            doneBtn2.Visible = false;
         }
     }
 }
