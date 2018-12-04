@@ -3,11 +3,12 @@ A counter program with added shiny hunting functionality. C# port of https://git
 
 A simple counter program with added shiny hunting functionality. Odds are displayed depending on the selected hunting method, and are dynamic for Poke Radar and chain fishing.
 
-# Completed features (v1.1.2)
+# Completed features (v1.2)
 - Basic counter functions
 - +/- buttons
 - Reset to 0 button (Under Edit menu item)
 - Custom value entry (Under Edit menu item)
+- Opacity slider (Under Edit menu item)
 - Keybindings (Found under Help menu item)
 - Method and target selection
 - Autosaving, as well as manual saving for certain scenarios
