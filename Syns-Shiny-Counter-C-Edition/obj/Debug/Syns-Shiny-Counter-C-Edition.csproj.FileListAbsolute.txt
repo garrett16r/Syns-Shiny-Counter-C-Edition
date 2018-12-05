@@ -13,3 +13,4 @@ C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\bin\Debug\Syns-
 C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\bin\Debug\Syns-Shiny-Counter-C-Edition.application
 C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.exe.manifest
 C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns-Shiny-Counter-C-Edition.application
+C:\Git\Syns-Shiny-Counter-C-Edition\Syns-Shiny-Counter-C-Edition\obj\Debug\Syns_Shiny_Counter_C_Edition.IntervalPage.resources
