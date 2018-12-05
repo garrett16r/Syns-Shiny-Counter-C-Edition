@@ -21,6 +21,7 @@ namespace Syns_Shiny_Counter_C_Edition
         public string target = "";
         public string method = "";
         public int oddsMax = 8192;
+        public int interval = 1;
 
         public ShinyCounter()
         {
@@ -29,7 +30,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         // Any code in this method immediately runs on startup
         private void ShinyCounter_Load(object sender, EventArgs e)
-        {            
+        {
             createFilesDirectories();
             fillPokemonList();
             //load();
@@ -305,6 +306,12 @@ namespace Syns_Shiny_Counter_C_Edition
             return message;
         }
 
+        public void setInterval(int i)
+        {
+            interval = i;
+            countBox.Increment = i;
+        }
+
         // About page button
         private void aboutSmi_Click(object sender, EventArgs e)
         {
@@ -345,7 +352,7 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             if (count > 0)
             {
-                count--;
+                count -= interval;
                 countBox.Value = count;
                 countBox.Focus();
             }
@@ -353,7 +360,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void plusBtn_Click(object sender, EventArgs e)
         {
-            count++;
+            count += interval;
             countBox.Value = count;
             countBox.Focus();
         }
@@ -393,7 +400,10 @@ namespace Syns_Shiny_Counter_C_Edition
                 "Down arrow - Decrease counter\n" +
                 "F1 - Reset counter to 0\n" +
                 "F2 - Set a custom value\n" +
-                "F5 - Show this screen");
+                "F3 - Reset counter interval to 1\n" +
+                "F5 - Show this screen\n" +
+                "Page Up - Increase counter interval\n" +
+                "Page Down - Decrease counter interval");
         }
 
         private void ShinyCounter_KeyDown(object sender, KeyEventArgs e)
@@ -406,9 +416,26 @@ namespace Syns_Shiny_Counter_C_Edition
             {
                 resetSmi_Click(null, null);
             }
+            else if (e.KeyCode == Keys.F3)
+            {
+                setInterval(1);
+            }
             else if (e.KeyCode == Keys.F5)
             {
                 keyboardSmi_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.PageUp)
+            {
+                interval++;
+                countBox.Increment++;
+            }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                if (interval > 1)
+                {
+                    interval--;
+                    countBox.Increment--;
+                }
             }
         }
 
@@ -416,7 +443,6 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             opacityBar.Visible = true;
             doneBtn2.Visible = true;
-            //this.Opacity -= .5;
         }
 
         private void opacityBar_ValueChanged(object sender, EventArgs e)
@@ -429,6 +455,13 @@ namespace Syns_Shiny_Counter_C_Edition
             opacityBar.Visible = false;
             doneBtn2.Visible = false;
             save();
+        }
+
+        private void intervalSmi_Click(object sender, EventArgs e)
+        {
+            IntervalPage ip = new IntervalPage(this);
+            ip.ShowDialog();
+            Console.WriteLine(interval);
         }
     }
 }
