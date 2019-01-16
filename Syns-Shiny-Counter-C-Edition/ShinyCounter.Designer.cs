@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShinyCounter));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.customSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.opacitySmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.intervalSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.githubSmi = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +52,6 @@
             this.customLbl = new System.Windows.Forms.Label();
             this.opacityBar = new System.Windows.Forms.TrackBar();
             this.doneBtn2 = new System.Windows.Forms.Button();
-            this.intervalSmi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opacityBar)).BeginInit();
@@ -83,23 +84,30 @@
             // resetSmi
             // 
             this.resetSmi.Name = "resetSmi";
-            this.resetSmi.Size = new System.Drawing.Size(180, 22);
+            this.resetSmi.Size = new System.Drawing.Size(159, 22);
             this.resetSmi.Text = "Reset to 0";
             this.resetSmi.Click += new System.EventHandler(this.resetSmi_Click);
             // 
             // customSmi
             // 
             this.customSmi.Name = "customSmi";
-            this.customSmi.Size = new System.Drawing.Size(180, 22);
+            this.customSmi.Size = new System.Drawing.Size(159, 22);
             this.customSmi.Text = "Custom value";
             this.customSmi.Click += new System.EventHandler(this.customSmi_Click);
             // 
             // opacitySmi
             // 
             this.opacitySmi.Name = "opacitySmi";
-            this.opacitySmi.Size = new System.Drawing.Size(180, 22);
+            this.opacitySmi.Size = new System.Drawing.Size(159, 22);
             this.opacitySmi.Text = "Opacity";
             this.opacitySmi.Click += new System.EventHandler(this.opacitySmi_Click);
+            // 
+            // intervalSmi
+            // 
+            this.intervalSmi.Name = "intervalSmi";
+            this.intervalSmi.Size = new System.Drawing.Size(159, 22);
+            this.intervalSmi.Text = "Counter interval";
+            this.intervalSmi.Click += new System.EventHandler(this.intervalSmi_Click);
             // 
             // helpMenuItem
             // 
@@ -114,21 +122,21 @@
             // aboutSmi
             // 
             this.aboutSmi.Name = "aboutSmi";
-            this.aboutSmi.Size = new System.Drawing.Size(180, 22);
+            this.aboutSmi.Size = new System.Drawing.Size(176, 22);
             this.aboutSmi.Text = "About";
             this.aboutSmi.Click += new System.EventHandler(this.aboutSmi_Click);
             // 
             // githubSmi
             // 
             this.githubSmi.Name = "githubSmi";
-            this.githubSmi.Size = new System.Drawing.Size(180, 22);
+            this.githubSmi.Size = new System.Drawing.Size(176, 22);
             this.githubSmi.Text = "Open GitHub Page";
             this.githubSmi.Click += new System.EventHandler(this.githubSmi_Click);
             // 
             // keyboardSmi
             // 
             this.keyboardSmi.Name = "keyboardSmi";
-            this.keyboardSmi.Size = new System.Drawing.Size(180, 22);
+            this.keyboardSmi.Size = new System.Drawing.Size(176, 22);
             this.keyboardSmi.Text = "Keyboard shortcuts";
             this.keyboardSmi.Click += new System.EventHandler(this.keyboardSmi_Click);
             // 
@@ -284,13 +292,6 @@
             this.doneBtn2.Visible = false;
             this.doneBtn2.Click += new System.EventHandler(this.doneBtn2_Click);
             // 
-            // intervalSmi
-            // 
-            this.intervalSmi.Name = "intervalSmi";
-            this.intervalSmi.Size = new System.Drawing.Size(180, 22);
-            this.intervalSmi.Text = "Counter interval";
-            this.intervalSmi.Click += new System.EventHandler(this.intervalSmi_Click);
-            // 
             // ShinyCounter
             // 
             this.AcceptButton = this.plusBtn;
@@ -310,6 +311,7 @@
             this.Controls.Add(this.plusBtn);
             this.Controls.Add(this.minusBtn);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
