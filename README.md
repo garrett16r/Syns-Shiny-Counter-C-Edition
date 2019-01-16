@@ -19,6 +19,7 @@ A simple counter program with added shiny hunting functionality. Odds are displa
 - Icon file
 
 # Upcoming features
+- Add support for Catch Combo hunting in Let's Go Pikachu/Eevee
 - Mark a target as found. Target, date, and number of encounters will be added to a viewable log.
 - Openable target selection menu that displays pixel sprites of all shiny Pokemon
 - Opacity control to allow for an overlay-esque option
