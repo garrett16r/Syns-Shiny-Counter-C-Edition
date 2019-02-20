@@ -149,7 +149,9 @@
             "Soft Resets (Gen 6+)",
             "Poke Radar (XY)",
             "Poke Radar (DPP)",
-            "Chain Fishing"});
+            "Chain Fishing",
+            "Catch Combo (With lure)",
+            "Catch Combo (No lure)"});
             this.methodCombo.Name = "methodCombo";
             this.methodCombo.Size = new System.Drawing.Size(145, 23);
             this.methodCombo.Text = "Select method...";

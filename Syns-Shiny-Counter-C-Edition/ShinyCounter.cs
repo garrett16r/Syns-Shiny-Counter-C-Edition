@@ -147,6 +147,10 @@ namespace Syns_Shiny_Counter_C_Edition
             int[] chainFishOdds = { 1336, 1336, 820, 586, 456, 373, 316, 274, 241, 216, 196, 179, 164, 152, 142, 133, 125,
                 118, 111, 106, 100 };
 
+            int[] comboOddsLure = { 2048, 819, 455, 315 };
+
+            int[] comboOddsNoLure = { 4096, 1024, 512, 341 };
+
             if (methodCombo.Text.Equals("Poke Radar (XY)"))
             {
 
@@ -207,6 +211,43 @@ namespace Syns_Shiny_Counter_C_Edition
                 odds = 4096;
             }
 
+            if (methodCombo.Text.Equals("Catch Combo (With lure)"))
+            {
+                if (count < 11)
+                {
+                    odds = comboOddsLure[0];
+                } else if (count < 21)
+                {
+                    odds = comboOddsLure[1];
+                } else if (count < 31)
+                {
+                    odds = comboOddsLure[2];
+                } else
+                {
+                    odds = comboOddsLure[3];
+                }
+            }
+
+            if (methodCombo.Text.Equals("Catch Combo (No lure)"))
+            {
+                if (count < 11)
+                {
+                    odds = comboOddsNoLure[0];
+                }
+                else if (count < 21)
+                {
+                    odds = comboOddsNoLure[1];
+                }
+                else if (count < 31)
+                {
+                    odds = comboOddsNoLure[2];
+                }
+                else
+                {
+                    odds = comboOddsNoLure[3];
+                }
+            }
+
             return odds;
         }
 
@@ -219,13 +260,15 @@ namespace Syns_Shiny_Counter_C_Edition
             msg.Add("One quarter of the way to odds!");
             msg.Add("Half way to odds!");
             msg.Add("Three quarters of the way!");
-            msg.Add("You should get " + target + " really soon!");
+            msg.Add("You should get " + target + " soon!");
             msg.Add("You better not stop the hunt now.");
             msg.Add("Better get that chain going.");
             msg.Add("It's a miracle you haven't broken your chain.");
 
+            // Runs only if the method is SR or RE
             if (!method.Equals("Poke Radar (XY)") && !method.Equals("Poke Radar (DPP)")
-                    && !method.Equals("Chain Fishing"))
+                    && !method.Equals("Chain Fishing") && !method.Equals("Catch Combo (With lure)")
+                    && !method.Equals("Catch Combo (No lure)"))
             {
                 if (count < (oddsMax / 4))
                 {
@@ -252,7 +295,8 @@ namespace Syns_Shiny_Counter_C_Edition
                     message = msg[5];
                 }
             }
-            else if (!method.Equals("Chain Fishing"))
+            // Runs for either Poke Radar version
+            else if (method.Equals("Poke Radar (XY)") || method.Equals("Poke Radar (DPP)"))
             {
                 if (count < 10)
                 {
@@ -275,6 +319,7 @@ namespace Syns_Shiny_Counter_C_Edition
                     message = "You better reset like there's no tomorrow (" + (count - 40) + " resets)";
                 }
             }
+            // Runs only for chain fishing
             else if (method.Equals("Chain Fishing"))
             {
                 if (count < 5)
@@ -300,6 +345,25 @@ namespace Syns_Shiny_Counter_C_Edition
                 else
                 {
                     message = msg[5];
+                }
+                // Runs for either catch combo version
+            } else if (method.Equals("Catch Combo (With lure)") || method.Equals("Catch combo (No lure)"))
+            {
+                if (count < 8)
+                {
+                    message = msg[6];
+                } else if (count < 16)
+                {
+                    message = msg[1];
+                } else if (count < 24)
+                {
+                    message = msg[2];
+                } else if (count < 31)
+                {
+                    message = msg[3];
+                } else
+                {
+                    message = msg[4];
                 }
             }
 
@@ -370,6 +434,8 @@ namespace Syns_Shiny_Counter_C_Edition
         {
             count = (int)countBox.Value;
             progressLbl.Text = getProgressMessage();
+            oddsMax = getOdds();
+            oddsLbl.Text = ("Your odds: 1/" + oddsMax);
             save();
         }
 
@@ -381,6 +447,7 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void methodCombo_TextChanged(object sender, EventArgs e)
         {
+            method = methodCombo.Text;
             oddsMax = getOdds();
             oddsLbl.Text = ("Your odds: 1/" + oddsMax);
             progressLbl.Text = getProgressMessage();
@@ -389,6 +456,9 @@ namespace Syns_Shiny_Counter_C_Edition
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            oddsMax = getOdds();
+            oddsLbl.Text = ("Your odds: 1/" + oddsMax);
+            progressLbl.Text = getProgressMessage();
             save();
             saveBtn.Visible = false;
         }
