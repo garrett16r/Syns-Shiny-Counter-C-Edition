@@ -248,6 +248,11 @@ namespace Syns_Shiny_Counter_C_Edition
                 }
             }
 
+            if (methodCombo.Text.Equals("Hordes"))
+            {
+                odds = 821;
+            }
+
             return odds;
         }
 
