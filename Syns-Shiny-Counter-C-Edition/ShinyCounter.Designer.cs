@@ -151,7 +151,8 @@
             "Poke Radar (DPP)",
             "Chain Fishing",
             "Catch Combo (With lure)",
-            "Catch Combo (No lure)"});
+            "Catch Combo (No lure)",
+            "Hordes"});
             this.methodCombo.Name = "methodCombo";
             this.methodCombo.Size = new System.Drawing.Size(145, 23);
             this.methodCombo.Text = "Select method...";
